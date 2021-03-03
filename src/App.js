@@ -1,25 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { useSelector } from 'react-redux';
+import Account from './Components/Account';
+import TransactionForm from './Components/TransactionForm';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const savings = useSelector(state => state.savings)
+  const checking = useSelector(state => state.checking)
 
+  return (
+    <div className="app">
+      <Account displayName ="Savings Account" balance={savings}/>
+      <Account displayName ="Checking Account" balance={checking}/>
+      <TransactionForm/>
+    </div>
+  )
+}
 export default App;
